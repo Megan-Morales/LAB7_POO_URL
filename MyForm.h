@@ -40,17 +40,21 @@ namespace Lab7 {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
-	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::Button^ btnInicializar;
+
 	private: System::Windows::Forms::ListBox^ listBox1;
-	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ btnActualizar;
+
 	private: System::Windows::Forms::GroupBox^ groupBoxCuadrado;
-	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ btnCuadrado;
+
 	private: System::Windows::Forms::Label^ label13;
 	private: System::Windows::Forms::TextBox^ textBox10;
 	private: System::Windows::Forms::TextBox^ textBox8;
 	private: System::Windows::Forms::Label^ label17;
 	private: System::Windows::Forms::GroupBox^ groupBoxRectangulo;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ btnRectangulo;
+
 	private: System::Windows::Forms::TextBox^ textBox6;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ textBox7;
@@ -60,7 +64,8 @@ namespace Lab7 {
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::GroupBox^ groupBoxTriangulo;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ btnTriangulo;
+
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::Label^ label5;
@@ -99,8 +104,8 @@ namespace Lab7 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->btnTriangulo = (gcnew System::Windows::Forms::Button());
+			this->btnRectangulo = (gcnew System::Windows::Forms::Button());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
@@ -109,14 +114,14 @@ namespace Lab7 {
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->btnCuadrado = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->label17 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
-			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->btnActualizar = (gcnew System::Windows::Forms::Button());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->btnInicializar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBoxTriangulo->SuspendLayout();
@@ -163,9 +168,9 @@ namespace Lab7 {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->Controls->Add(this->button6);
+			this->groupBox2->Controls->Add(this->btnInicializar);
 			this->groupBox2->Controls->Add(this->listBox1);
-			this->groupBox2->Controls->Add(this->button5);
+			this->groupBox2->Controls->Add(this->btnActualizar);
 			this->groupBox2->Controls->Add(this->groupBoxCuadrado);
 			this->groupBox2->Controls->Add(this->groupBoxRectangulo);
 			this->groupBox2->Controls->Add(this->groupBoxTriangulo);
@@ -178,7 +183,7 @@ namespace Lab7 {
 			// 
 			// groupBoxTriangulo
 			// 
-			this->groupBoxTriangulo->Controls->Add(this->button2);
+			this->groupBoxTriangulo->Controls->Add(this->btnTriangulo);
 			this->groupBoxTriangulo->Controls->Add(this->label8);
 			this->groupBoxTriangulo->Controls->Add(this->textBox4);
 			this->groupBoxTriangulo->Controls->Add(this->label5);
@@ -196,7 +201,7 @@ namespace Lab7 {
 			// 
 			// groupBoxRectangulo
 			// 
-			this->groupBoxRectangulo->Controls->Add(this->button3);
+			this->groupBoxRectangulo->Controls->Add(this->btnRectangulo);
 			this->groupBoxRectangulo->Controls->Add(this->textBox6);
 			this->groupBoxRectangulo->Controls->Add(this->label7);
 			this->groupBoxRectangulo->Controls->Add(this->textBox7);
@@ -214,7 +219,7 @@ namespace Lab7 {
 			// 
 			// groupBoxCuadrado
 			// 
-			this->groupBoxCuadrado->Controls->Add(this->button4);
+			this->groupBoxCuadrado->Controls->Add(this->btnCuadrado);
 			this->groupBoxCuadrado->Controls->Add(this->label13);
 			this->groupBoxCuadrado->Controls->Add(this->textBox10);
 			this->groupBoxCuadrado->Controls->Add(this->textBox8);
@@ -292,23 +297,23 @@ namespace Lab7 {
 			this->textBox4->Size = System::Drawing::Size(111, 22);
 			this->textBox4->TabIndex = 11;
 			// 
-			// button2
+			// btnTriangulo
 			// 
-			this->button2->Location = System::Drawing::Point(48, 249);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 24);
-			this->button2->TabIndex = 6;
-			this->button2->Text = L"Enviar";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btnTriangulo->Location = System::Drawing::Point(48, 249);
+			this->btnTriangulo->Name = L"btnTriangulo";
+			this->btnTriangulo->Size = System::Drawing::Size(75, 24);
+			this->btnTriangulo->TabIndex = 6;
+			this->btnTriangulo->Text = L"Enviar";
+			this->btnTriangulo->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btnRectangulo
 			// 
-			this->button3->Location = System::Drawing::Point(48, 249);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 24);
-			this->button3->TabIndex = 14;
-			this->button3->Text = L"Enviar";
-			this->button3->UseVisualStyleBackColor = true;
+			this->btnRectangulo->Location = System::Drawing::Point(48, 249);
+			this->btnRectangulo->Name = L"btnRectangulo";
+			this->btnRectangulo->Size = System::Drawing::Size(75, 24);
+			this->btnRectangulo->TabIndex = 14;
+			this->btnRectangulo->Text = L"Enviar";
+			this->btnRectangulo->UseVisualStyleBackColor = true;
 			// 
 			// label7
 			// 
@@ -376,14 +381,14 @@ namespace Lab7 {
 			this->textBox7->Size = System::Drawing::Size(79, 22);
 			this->textBox7->TabIndex = 13;
 			// 
-			// button4
+			// btnCuadrado
 			// 
-			this->button4->Location = System::Drawing::Point(48, 249);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 24);
-			this->button4->TabIndex = 14;
-			this->button4->Text = L"Enviar";
-			this->button4->UseVisualStyleBackColor = true;
+			this->btnCuadrado->Location = System::Drawing::Point(48, 249);
+			this->btnCuadrado->Name = L"btnCuadrado";
+			this->btnCuadrado->Size = System::Drawing::Size(75, 24);
+			this->btnCuadrado->TabIndex = 14;
+			this->btnCuadrado->Text = L"Enviar";
+			this->btnCuadrado->UseVisualStyleBackColor = true;
 			// 
 			// label13
 			// 
@@ -417,14 +422,14 @@ namespace Lab7 {
 			this->textBox10->Size = System::Drawing::Size(79, 22);
 			this->textBox10->TabIndex = 13;
 			// 
-			// button5
+			// btnActualizar
 			// 
-			this->button5->Location = System::Drawing::Point(384, 362);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(183, 24);
-			this->button5->TabIndex = 6;
-			this->button5->Text = L"Actualizar la lista";
-			this->button5->UseVisualStyleBackColor = true;
+			this->btnActualizar->Location = System::Drawing::Point(384, 362);
+			this->btnActualizar->Name = L"btnActualizar";
+			this->btnActualizar->Size = System::Drawing::Size(183, 24);
+			this->btnActualizar->TabIndex = 6;
+			this->btnActualizar->Text = L"Actualizar la lista";
+			this->btnActualizar->UseVisualStyleBackColor = true;
 			// 
 			// listBox1
 			// 
@@ -435,14 +440,14 @@ namespace Lab7 {
 			this->listBox1->Size = System::Drawing::Size(540, 228);
 			this->listBox1->TabIndex = 7;
 			// 
-			// button6
+			// btnInicializar
 			// 
-			this->button6->Location = System::Drawing::Point(22, 362);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(183, 24);
-			this->button6->TabIndex = 8;
-			this->button6->Text = L"Inicializar lista (Resetear)";
-			this->button6->UseVisualStyleBackColor = true;
+			this->btnInicializar->Location = System::Drawing::Point(22, 362);
+			this->btnInicializar->Name = L"btnInicializar";
+			this->btnInicializar->Size = System::Drawing::Size(183, 24);
+			this->btnInicializar->TabIndex = 8;
+			this->btnInicializar->Text = L"Inicializar lista (Resetear)";
+			this->btnInicializar->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 

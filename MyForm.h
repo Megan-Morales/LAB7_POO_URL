@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-//#include "Rectangulo.h"
-//#include "Cuadrado.h"
+#include "Rectangulo.h"
+#include "Cuadrado.h"
 #include"Triangulo.h"
 #include "Poligono.h"
 #include "List.h"
@@ -123,6 +123,11 @@ namespace Lab7 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->btnInicializar = (gcnew System::Windows::Forms::Button());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->btnActualizar = (gcnew System::Windows::Forms::Button());
@@ -150,11 +155,6 @@ namespace Lab7 {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->txtLadoT = (gcnew System::Windows::Forms::TextBox());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBoxCuadrado->SuspendLayout();
@@ -219,6 +219,51 @@ namespace Lab7 {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Ejercicio 2";
 			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(471, 429);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(69, 17);
+			this->label15->TabIndex = 22;
+			this->label15->Text = L"Perímetro";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(366, 429);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(38, 17);
+			this->label14->TabIndex = 21;
+			this->label14->Text = L"Área";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(254, 429);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(41, 17);
+			this->label11->TabIndex = 20;
+			this->label11->Text = L"Color";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(109, 429);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(96, 17);
+			this->label9->TabIndex = 19;
+			this->label9->Text = L"Tipo de figura";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(51, 429);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(21, 17);
+			this->label2->TabIndex = 18;
+			this->label2->Text = L"ID";
+			// 
 			// btnInicializar
 			// 
 			this->btnInicializar->Location = System::Drawing::Point(22, 362);
@@ -227,6 +272,7 @@ namespace Lab7 {
 			this->btnInicializar->TabIndex = 8;
 			this->btnInicializar->Text = L"Inicializar lista (Resetear)";
 			this->btnInicializar->UseVisualStyleBackColor = true;
+			this->btnInicializar->Click += gcnew System::EventHandler(this, &MyForm::btnInicializar_Click);
 			// 
 			// listBox1
 			// 
@@ -269,6 +315,7 @@ namespace Lab7 {
 			this->btnCuadrado->TabIndex = 14;
 			this->btnCuadrado->Text = L"Enviar";
 			this->btnCuadrado->UseVisualStyleBackColor = true;
+			this->btnCuadrado->Click += gcnew System::EventHandler(this, &MyForm::btnCuadrado_Click);
 			// 
 			// label13
 			// 
@@ -470,51 +517,6 @@ namespace Lab7 {
 			this->txtLadoT->Size = System::Drawing::Size(79, 22);
 			this->txtLadoT->TabIndex = 0;
 			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(471, 429);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(69, 17);
-			this->label15->TabIndex = 22;
-			this->label15->Text = L"Perímetro";
-			// 
-			// label14
-			// 
-			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(366, 429);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(38, 17);
-			this->label14->TabIndex = 21;
-			this->label14->Text = L"Área";
-			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(254, 429);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(41, 17);
-			this->label11->TabIndex = 20;
-			this->label11->Text = L"Color";
-			// 
-			// label9
-			// 
-			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(109, 429);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(96, 17);
-			this->label9->TabIndex = 19;
-			this->label9->Text = L"Tipo de figura";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(51, 429);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(21, 17);
-			this->label2->TabIndex = 18;
-			this->label2->Text = L"ID";
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -586,23 +588,43 @@ namespace Lab7 {
 		if ((txtAlturaR->Text->Trim() != "") && (txtBaseR->Text->Trim() != "") && (txtColorR->Text->Trim() != "")) {
 			double base = Convert::ToDouble(txtBaseR->Text);
 			double ladoT = Convert::ToDouble(txtAlturaR->Text);
-			String^ color = txtColorT->Text->Trim();
+			String^ color = txtColorR->Text->Trim();
 			string color2;
 			MarshalString(color, color2);
 			String^ figura = "Rectángulo";
 			string figura2;
 			MarshalString(figura, figura2);
-			/*Rectangulo* triangulito = new Triangulo(figura2, color2, ID, base, ladoT);*/
-			/*poligonos->add(triangulito);*/
+			Rectangulo* rectangulito = new Rectangulo(figura2, color2, ID, base, ladoT);
+			poligonos->add(rectangulito);
 			ID++;
-			MessageBox::Show("Triángulo insertado exitosamente, cantidad de elementos: " + poligonos->getSize(), "Insersión correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Rectángulo insertado exitosamente, cantidad de elementos: " + poligonos->getSize(), "Insersión correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else {
 			MessageBox::Show("Complete todos los campos", "Insersión incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
-			
-
-		
+		}	
 	}
+private: System::Void btnCuadrado_Click(System::Object^ sender, System::EventArgs^ e) {
+	if ((txtLadoC->Text->Trim() != "") &&  (txtColorC->Text->Trim() != "")) {
+		double base = Convert::ToDouble(txtLadoC->Text);
+		String^ color = txtColorC->Text->Trim();
+		string color2;
+		MarshalString(color, color2);
+		String^ figura = "Cuadrado";
+		string figura2;
+		MarshalString(figura, figura2);
+		Cuadrado* cuadradito = new Cuadrado(figura2, color2, ID, base);
+		poligonos->add(cuadradito);
+		ID++;
+		MessageBox::Show("Cuadrado insertado exitosamente, cantidad de elementos: " + poligonos->getSize(), "Insersión correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+	else {
+		MessageBox::Show("Complete todos los campos", "Insersión incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+}
+private: System::Void btnInicializar_Click(System::Object^ sender, System::EventArgs^ e) {
+	ID = 1;
+	poligonos->clear();
+	listBox1->Items->Clear();
+}
 };
 }

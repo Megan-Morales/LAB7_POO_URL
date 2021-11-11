@@ -23,5 +23,14 @@ public:
     {
         return (2 * this->base) + (2 * this->altura);
     }
+    int id()override {
+        return this->ID;
+    }
+    string getColor() override {
+        return this->color;
+    }
+    string getFigura() override {
+        return this->figura;
+    }
 };
 

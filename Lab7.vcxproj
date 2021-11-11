@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cuadrado.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

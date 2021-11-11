@@ -1,8 +1,10 @@
 #pragma once
+#include <string>
 #include "Rectangulo.h"
 #include "Cuadrado.h"
 #include"Triangulo.h"
 #include "Poligono.h"
+#include "List.h"
 
 namespace Lab7 {
 
@@ -19,9 +21,12 @@ namespace Lab7 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
+		int ID = 0;
+		List<Poligono>* poligonos;
 		MyForm(void)
 		{
 			InitializeComponent();
+			poligonos = new List<Poligono>();
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -217,6 +222,7 @@ namespace Lab7 {
 			this->btnActualizar->TabIndex = 6;
 			this->btnActualizar->Text = L"Actualizar la lista";
 			this->btnActualizar->UseVisualStyleBackColor = true;
+			this->btnActualizar->Click += gcnew System::EventHandler(this, &MyForm::btnActualizar_Click);
 			// 
 			// groupBoxCuadrado
 			// 
@@ -372,6 +378,7 @@ namespace Lab7 {
 			this->btnTriangulo->TabIndex = 6;
 			this->btnTriangulo->Text = L"Enviar";
 			this->btnTriangulo->UseVisualStyleBackColor = true;
+			this->btnTriangulo->Click += gcnew System::EventHandler(this, &MyForm::btnTriangulo_Click);
 			// 
 			// label8
 			// 
@@ -461,5 +468,41 @@ namespace Lab7 {
 
 		}
 #pragma endregion
-	};
+	void MarshalString(String^ s, string& os) {  
+		using namespace Runtime::InteropServices;
+		const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		os = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
+	}
+	void llenarListBox() { 
+		int contador = 0;
+		while (poligonos->get(contador) != nullptr) {
+			string Figura;
+			string Color;
+			Color = poligonos->get(contador)->getColor();
+			/*Artista = colaReproduccion->get(contador)->getArtist();*/
+			String^ color = gcnew String(Color.c_str());
+			/*String^ artista = gcnew String(Artista.c_str());*/
+			listBox1->Items->Add(contador + " - " + color+ " - " );
+			contador++;
+		}
+	}
+	private: System::Void btnTriangulo_Click(System::Object^ sender, System::EventArgs^ e) {
+		double base = Convert::ToDouble(txtBaseT->Text);
+		double ladoT = Convert::ToDouble(txtLadoT->Text);
+		String^ color = txtColorT->Text;
+		string color2;
+		MarshalString(color, color2);
+		String^ figura = "Triangulo";
+		string figura2;
+		MarshalString(figura, figura2);
+		Triangulo* triangulo = new Triangulo(figura2,color2, poligonos->get(ID)->id(), base, ladoT);
+		poligonos->add(triangulo);
+		ID++;
+	}
+	private: System::Void btnActualizar_Click(System::Object^ sender, System::EventArgs^ e) {
+		llenarListBox();
+	}
+
+};
 }

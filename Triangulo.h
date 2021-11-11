@@ -20,5 +20,15 @@ public:
     {
         return (2 * this->lado) + this->base;
     }
+    int id()override {
+        return this->ID;
+    }
+    string getColor() override {
+        return this->color;
+    }
+    string getFigura() override {
+        return this->figura;
+    }
+
 };
 

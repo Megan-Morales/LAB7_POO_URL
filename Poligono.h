@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-using namespace std;
+using std::string;
 
 class Poligono
 {
@@ -8,6 +8,8 @@ protected:
 	string figura;
 	string color;
 	int ID;
+
+
 public:
 
 	Poligono(string figura, string color, int ID) {
@@ -18,11 +20,14 @@ public:
 	virtual double calcularArea() = 0;
 	virtual double calcularPerimetro() = 0;
 
-	string getColor() {	
-		return this->color;
+	virtual string getColor() {
+		return "";
 	}
-	int id() {
-		this->ID++;
+	virtual int id() {
+		return 0;
+	}
+	virtual string getFigura() {
+		return "";
 	}
 };
 

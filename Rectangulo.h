@@ -1,7 +1,7 @@
 #pragma once
 #include "Poligono.h"
 #include <string>
-using namespace std;
+using  std::string;
 
 class Rectangulo :
     public Poligono
@@ -11,7 +11,7 @@ protected:
     double altura;
 public:
 
-    Rectangulo(string figura, string color, int ID, double base, double altura) :Poligono(figura,color,ID) {
+    Rectangulo(string figura, string color, int ID, double base, double altura) :Poligono(figura, color, ID) {
         this->base = base;
         this->altura = altura;
     }
@@ -21,7 +21,7 @@ public:
     }
     double Rectangulo::calcularPerimetro()override
     {
-	    return (2 * this->base )+( 2 * this->altura);
+        return (2 * this->base) + (2 * this->altura);
     }
 };
 

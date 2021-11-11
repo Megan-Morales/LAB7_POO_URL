@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "Rectangulo.h"
-#include "Cuadrado.h"
+//#include "Rectangulo.h"
+//#include "Cuadrado.h"
 #include"Triangulo.h"
 #include "Poligono.h"
 #include "List.h"
@@ -21,12 +21,25 @@ namespace Lab7 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		int ID = 0;
-		List<Poligono>* poligonos;
+		int ID = 1;
+	private: System::Windows::Forms::Label^ label15;
+	public:
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label2;
+
+	public:
+
+
+
+
+		   List<Poligono>* poligonos;
 		MyForm(void)
 		{
 			InitializeComponent();
 			poligonos = new List<Poligono>();
+			
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -137,6 +150,11 @@ namespace Lab7 {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->txtLadoT = (gcnew System::Windows::Forms::TextBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBoxCuadrado->SuspendLayout();
@@ -183,6 +201,11 @@ namespace Lab7 {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->label15);
+			this->groupBox2->Controls->Add(this->label14);
+			this->groupBox2->Controls->Add(this->label11);
+			this->groupBox2->Controls->Add(this->label9);
+			this->groupBox2->Controls->Add(this->label2);
 			this->groupBox2->Controls->Add(this->btnInicializar);
 			this->groupBox2->Controls->Add(this->listBox1);
 			this->groupBox2->Controls->Add(this->btnActualizar);
@@ -209,9 +232,9 @@ namespace Lab7 {
 			// 
 			this->listBox1->FormattingEnabled = true;
 			this->listBox1->ItemHeight = 16;
-			this->listBox1->Location = System::Drawing::Point(22, 401);
+			this->listBox1->Location = System::Drawing::Point(22, 449);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(540, 228);
+			this->listBox1->Size = System::Drawing::Size(540, 180);
 			this->listBox1->TabIndex = 7;
 			// 
 			// btnActualizar
@@ -303,6 +326,7 @@ namespace Lab7 {
 			this->btnRectangulo->TabIndex = 14;
 			this->btnRectangulo->Text = L"Enviar";
 			this->btnRectangulo->UseVisualStyleBackColor = true;
+			this->btnRectangulo->Click += gcnew System::EventHandler(this, &MyForm::btnRectangulo_Click);
 			// 
 			// txtAlturaR
 			// 
@@ -446,6 +470,51 @@ namespace Lab7 {
 			this->txtLadoT->Size = System::Drawing::Size(79, 22);
 			this->txtLadoT->TabIndex = 0;
 			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(471, 429);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(69, 17);
+			this->label15->TabIndex = 22;
+			this->label15->Text = L"Perímetro";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(366, 429);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(38, 17);
+			this->label14->TabIndex = 21;
+			this->label14->Text = L"Área";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(254, 429);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(41, 17);
+			this->label11->TabIndex = 20;
+			this->label11->Text = L"Color";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(109, 429);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(96, 17);
+			this->label9->TabIndex = 19;
+			this->label9->Text = L"Tipo de figura";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(51, 429);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(21, 17);
+			this->label2->TabIndex = 18;
+			this->label2->Text = L"ID";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -458,6 +527,7 @@ namespace Lab7 {
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			this->groupBoxCuadrado->ResumeLayout(false);
 			this->groupBoxCuadrado->PerformLayout();
 			this->groupBoxRectangulo->ResumeLayout(false);
@@ -468,41 +538,71 @@ namespace Lab7 {
 
 		}
 #pragma endregion
-	void MarshalString(String^ s, string& os) {  
-		using namespace Runtime::InteropServices;
-		const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-		os = chars;
-		Marshal::FreeHGlobal(IntPtr((void*)chars));
-	}
-	void llenarListBox() { 
-		int contador = 0;
-		while (poligonos->get(contador) != nullptr) {
-			string Figura;
-			string Color;
-			Color = poligonos->get(contador)->getColor();
-			/*Artista = colaReproduccion->get(contador)->getArtist();*/
-			String^ color = gcnew String(Color.c_str());
-			/*String^ artista = gcnew String(Artista.c_str());*/
-			listBox1->Items->Add(contador + " - " + color+ " - " );
-			contador++;
+		void MarshalString(String^ s, string& os) {
+			using namespace Runtime::InteropServices;
+			const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			os = chars;
+			Marshal::FreeHGlobal(IntPtr((void*)chars));
 		}
-	}
+		void llenarListBox() {
+			listBox1->Items->Clear();
+			int contador = 0;
+			while (poligonos->get(contador) != nullptr) {
+				string Figura;
+				string Color;
+				Color = poligonos->get(contador)->getColor();
+				String^ color = gcnew String(Color.c_str());
+				Figura = poligonos->get(contador)->getFigura();
+				String^ figura = gcnew String(Figura.c_str());
+				listBox1->Items->Add("        " + poligonos->get(contador)->id() + " ----------- " + figura + " ---------------- " + color + " ----------- " + (poligonos->get(contador)->calcularArea()) + " ------------- " + poligonos->get(contador)->calcularPerimetro());
+				contador++;
+			}
+		}
 	private: System::Void btnTriangulo_Click(System::Object^ sender, System::EventArgs^ e) {
-		double base = Convert::ToDouble(txtBaseT->Text);
-		double ladoT = Convert::ToDouble(txtLadoT->Text);
-		String^ color = txtColorT->Text;
-		string color2;
-		MarshalString(color, color2);
-		String^ figura = "Triangulo";
-		string figura2;
-		MarshalString(figura, figura2);
-		Triangulo* triangulo = new Triangulo(figura2,color2, poligonos->get(ID)->id(), base, ladoT);
-		poligonos->add(triangulo);
-		ID++;
+		if ((txtBaseT->Text->Trim() != "") && (txtLadoT->Text->Trim() != "") && (txtColorT->Text->Trim() != "")) {
+			double base = Convert::ToDouble(txtBaseT->Text);
+			double ladoT = Convert::ToDouble(txtLadoT->Text);
+			String^ color = txtColorT->Text->Trim();
+			string color2;
+			MarshalString(color, color2);
+			String^ figura = "Triángulo";
+			string figura2;
+			MarshalString(figura, figura2);
+			Triangulo* triangulito = new Triangulo(figura2, color2, ID, base, ladoT);
+			poligonos->add(triangulito);
+			ID++;
+			MessageBox::Show("Triángulo insertado exitosamente, cantidad de elementos: " + poligonos->getSize(), "Insersión correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		else {
+			MessageBox::Show("Complete todos los campos", "Insersión incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
 	}
 	private: System::Void btnActualizar_Click(System::Object^ sender, System::EventArgs^ e) {
 		llenarListBox();
 	}
 
+	private: System::Void btnRectangulo_Click(System::Object^ sender, System::EventArgs^ e) {
+		if ((txtAlturaR->Text->Trim() != "") && (txtBaseR->Text->Trim() != "") && (txtColorR->Text->Trim() != "")) {
+			double base = Convert::ToDouble(txtBaseR->Text);
+			double ladoT = Convert::ToDouble(txtAlturaR->Text);
+			String^ color = txtColorT->Text->Trim();
+			string color2;
+			MarshalString(color, color2);
+			String^ figura = "Rectángulo";
+			string figura2;
+			MarshalString(figura, figura2);
+			/*Rectangulo* triangulito = new Triangulo(figura2, color2, ID, base, ladoT);*/
+			/*poligonos->add(triangulito);*/
+			ID++;
+			MessageBox::Show("Triángulo insertado exitosamente, cantidad de elementos: " + poligonos->getSize(), "Insersión correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		else {
+			MessageBox::Show("Complete todos los campos", "Insersión incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+			
+
+		
+	}
 };
 }

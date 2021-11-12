@@ -23,6 +23,8 @@ namespace Lab7 {
 	public:
 		int ID = 1;
 		int *arreglo;
+		int mayor = 0;
+		int menor = 0;
 	private: System::Windows::Forms::Label^ label15;
 	public:
 	private: System::Windows::Forms::Label^ label14;
@@ -32,7 +34,8 @@ namespace Lab7 {
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::Label^ label19;
 	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ txtBinaria;
+
 	private: System::Windows::Forms::Label^ label18;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::TextBox^ txtSecuencial;
@@ -41,12 +44,12 @@ namespace Lab7 {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ lbCantidad;
 	private: System::Windows::Forms::ListBox^ listBox2;
-	private: System::Windows::Forms::Label^ lbHash;
-	private: System::Windows::Forms::Label^ label23;
-	private: System::Windows::Forms::Label^ lbBinario;
-	private: System::Windows::Forms::Label^ label22;
-	private: System::Windows::Forms::Label^ lbTiempoSecuencial;
-	private: System::Windows::Forms::Label^ label20;
+
+
+
+
+
+
 
 	public:
 
@@ -138,16 +141,10 @@ namespace Lab7 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->lbHash = (gcnew System::Windows::Forms::Label());
-			this->label23 = (gcnew System::Windows::Forms::Label());
-			this->lbBinario = (gcnew System::Windows::Forms::Label());
-			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->lbTiempoSecuencial = (gcnew System::Windows::Forms::Label());
-			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtBinaria = (gcnew System::Windows::Forms::TextBox());
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->txtSecuencial = (gcnew System::Windows::Forms::TextBox());
@@ -200,16 +197,10 @@ namespace Lab7 {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->lbHash);
-			this->groupBox1->Controls->Add(this->label23);
-			this->groupBox1->Controls->Add(this->lbBinario);
-			this->groupBox1->Controls->Add(this->label22);
-			this->groupBox1->Controls->Add(this->lbTiempoSecuencial);
-			this->groupBox1->Controls->Add(this->label20);
 			this->groupBox1->Controls->Add(this->textBox4);
 			this->groupBox1->Controls->Add(this->label19);
 			this->groupBox1->Controls->Add(this->button4);
-			this->groupBox1->Controls->Add(this->textBox3);
+			this->groupBox1->Controls->Add(this->txtBinaria);
 			this->groupBox1->Controls->Add(this->label18);
 			this->groupBox1->Controls->Add(this->button3);
 			this->groupBox1->Controls->Add(this->txtSecuencial);
@@ -227,60 +218,9 @@ namespace Lab7 {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Ejercicio 1";
 			// 
-			// lbHash
-			// 
-			this->lbHash->AutoSize = true;
-			this->lbHash->Location = System::Drawing::Point(164, 388);
-			this->lbHash->Name = L"lbHash";
-			this->lbHash->Size = System::Drawing::Size(0, 17);
-			this->lbHash->TabIndex = 27;
-			// 
-			// label23
-			// 
-			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(95, 388);
-			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(63, 17);
-			this->label23->TabIndex = 26;
-			this->label23->Text = L"Tiempo: ";
-			// 
-			// lbBinario
-			// 
-			this->lbBinario->AutoSize = true;
-			this->lbBinario->Location = System::Drawing::Point(164, 318);
-			this->lbBinario->Name = L"lbBinario";
-			this->lbBinario->Size = System::Drawing::Size(0, 17);
-			this->lbBinario->TabIndex = 25;
-			// 
-			// label22
-			// 
-			this->label22->AutoSize = true;
-			this->label22->Location = System::Drawing::Point(95, 318);
-			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(63, 17);
-			this->label22->TabIndex = 24;
-			this->label22->Text = L"Tiempo: ";
-			// 
-			// lbTiempoSecuencial
-			// 
-			this->lbTiempoSecuencial->AutoSize = true;
-			this->lbTiempoSecuencial->Location = System::Drawing::Point(164, 250);
-			this->lbTiempoSecuencial->Name = L"lbTiempoSecuencial";
-			this->lbTiempoSecuencial->Size = System::Drawing::Size(0, 17);
-			this->lbTiempoSecuencial->TabIndex = 23;
-			// 
-			// label20
-			// 
-			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(95, 250);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(63, 17);
-			this->label20->TabIndex = 13;
-			this->label20->Text = L"Tiempo: ";
-			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(203, 352);
+			this->textBox4->Location = System::Drawing::Point(201, 331);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(70, 22);
 			this->textBox4->TabIndex = 22;
@@ -288,7 +228,7 @@ namespace Lab7 {
 			// label19
 			// 
 			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(76, 355);
+			this->label19->Location = System::Drawing::Point(74, 334);
 			this->label19->Name = L"label19";
 			this->label19->Size = System::Drawing::Size(112, 17);
 			this->label19->TabIndex = 21;
@@ -296,24 +236,24 @@ namespace Lab7 {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(290, 348);
+			this->button4->Location = System::Drawing::Point(288, 327);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 31);
 			this->button4->TabIndex = 20;
 			this->button4->Text = L"Aceptar";
 			this->button4->UseVisualStyleBackColor = true;
 			// 
-			// textBox3
+			// txtBinaria
 			// 
-			this->textBox3->Location = System::Drawing::Point(203, 285);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(70, 22);
-			this->textBox3->TabIndex = 19;
+			this->txtBinaria->Location = System::Drawing::Point(202, 291);
+			this->txtBinaria->Name = L"txtBinaria";
+			this->txtBinaria->Size = System::Drawing::Size(70, 22);
+			this->txtBinaria->TabIndex = 19;
 			// 
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(30, 285);
+			this->label18->Location = System::Drawing::Point(29, 291);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(167, 17);
 			this->label18->TabIndex = 18;
@@ -321,16 +261,17 @@ namespace Lab7 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(290, 281);
+			this->button3->Location = System::Drawing::Point(289, 287);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 31);
 			this->button3->TabIndex = 17;
 			this->button3->Text = L"Aceptar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// txtSecuencial
 			// 
-			this->txtSecuencial->Location = System::Drawing::Point(203, 217);
+			this->txtSecuencial->Location = System::Drawing::Point(203, 250);
 			this->txtSecuencial->Name = L"txtSecuencial";
 			this->txtSecuencial->Size = System::Drawing::Size(70, 22);
 			this->txtSecuencial->TabIndex = 16;
@@ -338,7 +279,7 @@ namespace Lab7 {
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(6, 217);
+			this->label16->Location = System::Drawing::Point(6, 250);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(191, 17);
 			this->label16->TabIndex = 15;
@@ -346,7 +287,7 @@ namespace Lab7 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(290, 213);
+			this->button2->Location = System::Drawing::Point(290, 246);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 31);
 			this->button2->TabIndex = 14;
@@ -742,8 +683,7 @@ namespace Lab7 {
 		void funcionRandom() {
 			int cantidad = Convert::ToInt16(textBox1->Text);
 			int contador = 0;
-			int mayor = 0;
-			int menor = 0;
+			
 			arreglo = new int[cantidad];
 			for (int i = 0; i < cantidad; i++) {
 				arreglo[i]= rand() % (150 - 1 + 1) + 1;
@@ -759,13 +699,50 @@ namespace Lab7 {
 			}
 			
 		}
-		int metodoSecuencial( int cantidad, int numero) {
+		int metodoSecuencial(int cantidad, int numero) {
 			
 			for (int i = 0; i < cantidad; i++)
 			{
 				if (this->arreglo[i] == numero)
 				{
 					return i;
+				}
+			}
+			return -1;
+		}
+		/*int Binario(int m, int s, int numero)
+		{
+			int medio = 0;
+			while (m <= s) {
+				medio = (m + s) / 2;
+				if (arreglo[medio] == numero) {
+					return medio;
+				}
+				if (arreglo[medio] > numero) {
+					s = medio;
+					medio= (m + s) / 2;
+				}
+				if (arreglo[medio] < numero) {
+					m = medio;
+					medio = (m + s) / 2;
+				}
+			}
+		}*/
+		int Binario(int n, int x)
+		{
+			int L = 0;
+			int R = n - 1;
+			while (L <= R)
+			{
+				int Mid = L + (R - L) / 2;
+				if (arreglo[Mid] == x) {
+					return Mid;
+				}
+				if (arreglo[Mid] > x) {
+					R = Mid - 1;
+				}
+				else {
+					L = Mid + 1;
 				}
 			}
 			return -1;
@@ -864,6 +841,11 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		int cantidad = Convert::ToInt16(textBox1->Text);
 		int numero = Convert::ToInt16(txtSecuencial->Text);
 		MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad, numero));
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		int cantidad = Convert::ToInt16(textBox1->Text);
+		int numero = Convert::ToInt16(txtBinaria->Text);
+		MessageBox::Show("El número se encuentra en la posición: " + Binario(cantidad-1, numero));
 }
 };
 }

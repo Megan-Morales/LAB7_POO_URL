@@ -22,12 +22,31 @@ namespace Lab7 {
 	{
 	public:
 		int ID = 1;
+		int *arreglo;
 	private: System::Windows::Forms::Label^ label15;
 	public:
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::Label^ label19;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::Label^ label18;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::TextBox^ txtSecuencial;
+
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Label^ lbCantidad;
+	private: System::Windows::Forms::ListBox^ listBox2;
+	private: System::Windows::Forms::Label^ lbHash;
+	private: System::Windows::Forms::Label^ label23;
+	private: System::Windows::Forms::Label^ lbBinario;
+	private: System::Windows::Forms::Label^ label22;
+	private: System::Windows::Forms::Label^ lbTiempoSecuencial;
+	private: System::Windows::Forms::Label^ label20;
 
 	public:
 
@@ -119,6 +138,23 @@ namespace Lab7 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->lbHash = (gcnew System::Windows::Forms::Label());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->lbBinario = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->lbTiempoSecuencial = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->txtSecuencial = (gcnew System::Windows::Forms::TextBox());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->lbCantidad = (gcnew System::Windows::Forms::Label());
+			this->listBox2 = (gcnew System::Windows::Forms::ListBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -164,6 +200,23 @@ namespace Lab7 {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->lbHash);
+			this->groupBox1->Controls->Add(this->label23);
+			this->groupBox1->Controls->Add(this->lbBinario);
+			this->groupBox1->Controls->Add(this->label22);
+			this->groupBox1->Controls->Add(this->lbTiempoSecuencial);
+			this->groupBox1->Controls->Add(this->label20);
+			this->groupBox1->Controls->Add(this->textBox4);
+			this->groupBox1->Controls->Add(this->label19);
+			this->groupBox1->Controls->Add(this->button4);
+			this->groupBox1->Controls->Add(this->textBox3);
+			this->groupBox1->Controls->Add(this->label18);
+			this->groupBox1->Controls->Add(this->button3);
+			this->groupBox1->Controls->Add(this->txtSecuencial);
+			this->groupBox1->Controls->Add(this->label16);
+			this->groupBox1->Controls->Add(this->button2);
+			this->groupBox1->Controls->Add(this->lbCantidad);
+			this->groupBox1->Controls->Add(this->listBox2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->button1);
@@ -173,6 +226,150 @@ namespace Lab7 {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Ejercicio 1";
+			// 
+			// lbHash
+			// 
+			this->lbHash->AutoSize = true;
+			this->lbHash->Location = System::Drawing::Point(164, 388);
+			this->lbHash->Name = L"lbHash";
+			this->lbHash->Size = System::Drawing::Size(0, 17);
+			this->lbHash->TabIndex = 27;
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(95, 388);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(63, 17);
+			this->label23->TabIndex = 26;
+			this->label23->Text = L"Tiempo: ";
+			// 
+			// lbBinario
+			// 
+			this->lbBinario->AutoSize = true;
+			this->lbBinario->Location = System::Drawing::Point(164, 318);
+			this->lbBinario->Name = L"lbBinario";
+			this->lbBinario->Size = System::Drawing::Size(0, 17);
+			this->lbBinario->TabIndex = 25;
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(95, 318);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(63, 17);
+			this->label22->TabIndex = 24;
+			this->label22->Text = L"Tiempo: ";
+			// 
+			// lbTiempoSecuencial
+			// 
+			this->lbTiempoSecuencial->AutoSize = true;
+			this->lbTiempoSecuencial->Location = System::Drawing::Point(164, 250);
+			this->lbTiempoSecuencial->Name = L"lbTiempoSecuencial";
+			this->lbTiempoSecuencial->Size = System::Drawing::Size(0, 17);
+			this->lbTiempoSecuencial->TabIndex = 23;
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(95, 250);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(63, 17);
+			this->label20->TabIndex = 13;
+			this->label20->Text = L"Tiempo: ";
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(203, 352);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(70, 22);
+			this->textBox4->TabIndex = 22;
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(76, 355);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(112, 17);
+			this->label19->TabIndex = 21;
+			this->label19->Text = L"Método de Hash";
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(290, 348);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(75, 31);
+			this->button4->TabIndex = 20;
+			this->button4->Text = L"Aceptar";
+			this->button4->UseVisualStyleBackColor = true;
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(203, 285);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(70, 22);
+			this->textBox3->TabIndex = 19;
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(30, 285);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(167, 17);
+			this->label18->TabIndex = 18;
+			this->label18->Text = L"Buscar de forma binaria: ";
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(290, 281);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 31);
+			this->button3->TabIndex = 17;
+			this->button3->Text = L"Aceptar";
+			this->button3->UseVisualStyleBackColor = true;
+			// 
+			// txtSecuencial
+			// 
+			this->txtSecuencial->Location = System::Drawing::Point(203, 217);
+			this->txtSecuencial->Name = L"txtSecuencial";
+			this->txtSecuencial->Size = System::Drawing::Size(70, 22);
+			this->txtSecuencial->TabIndex = 16;
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(6, 217);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(191, 17);
+			this->label16->TabIndex = 15;
+			this->label16->Text = L"Buscar de forma secuencial: ";
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(290, 213);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(75, 31);
+			this->button2->TabIndex = 14;
+			this->button2->Text = L"Aceptar";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// lbCantidad
+			// 
+			this->lbCantidad->AutoSize = true;
+			this->lbCantidad->Location = System::Drawing::Point(421, 612);
+			this->lbCantidad->Name = L"lbCantidad";
+			this->lbCantidad->Size = System::Drawing::Size(0, 17);
+			this->lbCantidad->TabIndex = 13;
+			// 
+			// listBox2
+			// 
+			this->listBox2->FormattingEnabled = true;
+			this->listBox2->ItemHeight = 16;
+			this->listBox2->Location = System::Drawing::Point(398, 101);
+			this->listBox2->Name = L"listBox2";
+			this->listBox2->Size = System::Drawing::Size(101, 500);
+			this->listBox2->TabIndex = 3;
 			// 
 			// textBox1
 			// 
@@ -198,6 +395,7 @@ namespace Lab7 {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Aceptar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// groupBox2
 			// 
@@ -540,6 +738,38 @@ namespace Lab7 {
 
 		}
 #pragma endregion
+		
+		void funcionRandom() {
+			int cantidad = Convert::ToInt16(textBox1->Text);
+			int contador = 0;
+			int mayor = 0;
+			int menor = 0;
+			arreglo = new int[cantidad];
+			for (int i = 0; i < cantidad; i++) {
+				arreglo[i]= rand() % (150 - 1 + 1) + 1;
+				listBox2->Items->Add(contador+" --- "+arreglo[i]);
+
+				if (arreglo[i] > mayor) {
+					mayor = arreglo[i];
+				}
+				if (arreglo[i] < menor) {
+					menor = arreglo[i];
+				}
+				contador++;
+			}
+			
+		}
+		int metodoSecuencial( int cantidad, int numero) {
+			
+			for (int i = 0; i < cantidad; i++)
+			{
+				if (this->arreglo[i] == numero)
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
 		void MarshalString(String^ s, string& os) {
 			using namespace Runtime::InteropServices;
 			const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
@@ -622,9 +852,18 @@ private: System::Void btnCuadrado_Click(System::Object^ sender, System::EventArg
 	}
 }
 private: System::Void btnInicializar_Click(System::Object^ sender, System::EventArgs^ e) {
-	ID = 1;
-	poligonos->clear();
-	listBox1->Items->Clear();
+		ID = 1;
+		poligonos->clear();
+		listBox1->Items->Clear();
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	listBox2->Items->Clear();
+	funcionRandom();
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		int cantidad = Convert::ToInt16(textBox1->Text);
+		int numero = Convert::ToInt16(txtSecuencial->Text);
+		MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad, numero));
 }
 };
 }

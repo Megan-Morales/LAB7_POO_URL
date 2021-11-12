@@ -6,6 +6,8 @@
 #include "Poligono.h"
 #include "List.h"
 
+
+
 namespace Lab7 {
 
 	using namespace System;
@@ -14,6 +16,7 @@ namespace Lab7 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	
 
 	/// <summary>
 	/// Resumen de MyForm
@@ -23,8 +26,7 @@ namespace Lab7 {
 	public:
 		int ID = 1;
 		int *arreglo;
-		int mayor = 0;
-		int menor = 0;
+		
 	private: System::Windows::Forms::Label^ label15;
 	public:
 	private: System::Windows::Forms::Label^ label14;
@@ -46,15 +48,7 @@ namespace Lab7 {
 	private: System::Windows::Forms::ListBox^ listBox2;
 
 
-
-
-
-
-
 	public:
-
-
-
 
 		   List<Poligono>* poligonos;
 		MyForm(void)
@@ -82,7 +76,8 @@ namespace Lab7 {
 	protected:
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ btnAceptar;
+
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::Button^ btnInicializar;
 
@@ -154,7 +149,7 @@ namespace Lab7 {
 			this->listBox2 = (gcnew System::Windows::Forms::ListBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btnAceptar = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
@@ -210,7 +205,7 @@ namespace Lab7 {
 			this->groupBox1->Controls->Add(this->listBox2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Controls->Add(this->btnAceptar);
 			this->groupBox1->Location = System::Drawing::Point(12, 12);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(573, 642);
@@ -328,15 +323,15 @@ namespace Lab7 {
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Ingrese el tamaño del arreglo: ";
 			// 
-			// button1
+			// btnAceptar
 			// 
-			this->button1->Location = System::Drawing::Point(424, 45);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 31);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Aceptar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->btnAceptar->Location = System::Drawing::Point(424, 45);
+			this->btnAceptar->Name = L"btnAceptar";
+			this->btnAceptar->Size = System::Drawing::Size(75, 31);
+			this->btnAceptar->TabIndex = 0;
+			this->btnAceptar->Text = L"Aceptar";
+			this->btnAceptar->UseVisualStyleBackColor = true;
+			this->btnAceptar->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// groupBox2
 			// 
@@ -681,26 +676,33 @@ namespace Lab7 {
 #pragma endregion
 		
 		void funcionRandom() {
-			int cantidad = Convert::ToInt16(textBox1->Text);
-			int contador = 0;
-			
+			int cantidad = Convert::ToInt16(textBox1->Text);	
 			arreglo = new int[cantidad];
 			for (int i = 0; i < cantidad; i++) {
-				arreglo[i]= rand() % (150 - 1 + 1) + 1;
-				listBox2->Items->Add(contador+" --- "+arreglo[i]);
-
-				if (arreglo[i] > mayor) {
-					mayor = arreglo[i];
+				arreglo[i] = rand() % (900 - (1 + 1)) + 1;
+			}	
+		}
+		void Burbuja(int n)
+		{
+			int contador = 0;
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = 0; j < n - i - 1; j++)
+				{
+					if (arreglo[j] > arreglo[j + 1])
+					{
+						int aux = arreglo[j];
+						arreglo[j] = arreglo[j + 1];
+						arreglo[j + 1] = aux;
+						
+					}
 				}
-				if (arreglo[i] < menor) {
-					menor = arreglo[i];
-				}
+				listBox2->Items->Add(contador + " --- " + arreglo[i]);
 				contador++;
 			}
-			
 		}
 		int metodoSecuencial(int cantidad, int numero) {
-			
+		
 			for (int i = 0; i < cantidad; i++)
 			{
 				if (this->arreglo[i] == numero)
@@ -710,43 +712,26 @@ namespace Lab7 {
 			}
 			return -1;
 		}
-		/*int Binario(int m, int s, int numero)
+		int Binario(int m, int s, int numero)
 		{
 			int medio = 0;
 			while (m <= s) {
 				medio = (m + s) / 2;
-				if (arreglo[medio] == numero) {
+				if (this->arreglo[medio] == numero) {
 					return medio;
 				}
 				if (arreglo[medio] > numero) {
 					s = medio;
 					medio= (m + s) / 2;
 				}
-				if (arreglo[medio] < numero) {
+				if (this->arreglo[medio] < numero) {
 					m = medio;
 					medio = (m + s) / 2;
 				}
 			}
-		}*/
-		int Binario(int n, int x)
-		{
-			int L = 0;
-			int R = n - 1;
-			while (L <= R)
-			{
-				int Mid = L + (R - L) / 2;
-				if (arreglo[Mid] == x) {
-					return Mid;
-				}
-				if (arreglo[Mid] > x) {
-					R = Mid - 1;
-				}
-				else {
-					L = Mid + 1;
-				}
-			}
 			return -1;
 		}
+
 		void MarshalString(String^ s, string& os) {
 			using namespace Runtime::InteropServices;
 			const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
@@ -834,18 +819,31 @@ private: System::Void btnInicializar_Click(System::Object^ sender, System::Event
 		listBox1->Items->Clear();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	listBox2->Items->Clear();
-	funcionRandom();
+		listBox2->Items->Clear();
+		int cantidad = Convert::ToInt16(textBox1->Text);
+		funcionRandom();
+		Burbuja(cantidad-1);
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		int cantidad = Convert::ToInt16(textBox1->Text);
 		int numero = Convert::ToInt16(txtSecuencial->Text);
-		MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad, numero));
+		if (metodoSecuencial(cantidad - 1, numero) == -1) {
+			MessageBox::Show("El número no existe ");
+		}
+		else {
+			MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad - 1, numero));
+		}
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		int cantidad = Convert::ToInt16(textBox1->Text);
 		int numero = Convert::ToInt16(txtBinaria->Text);
-		MessageBox::Show("El número se encuentra en la posición: " + Binario(cantidad-1, numero));
+		MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad-1, numero));
+		if (Binario(0, cantidad - 1, numero) == -1) {
+			MessageBox::Show("El número no existe ");
+		}
+		else {
+			MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad - 1, numero));
+		}
 }
 };
 }

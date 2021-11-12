@@ -26,6 +26,7 @@ namespace Lab7 {
 	public:
 		int ID = 1;
 		int *arreglo;
+		int cantidad;
 		
 	private: System::Windows::Forms::Label^ label15;
 	public:
@@ -684,7 +685,6 @@ namespace Lab7 {
 		}
 		void Burbuja(int n)
 		{
-			int contador = 0;
 			for (int i = 0; i < n; i++)
 			{
 				for (int j = 0; j < n - i - 1; j++)
@@ -697,6 +697,11 @@ namespace Lab7 {
 						
 					}
 				}
+			}
+		}
+		void llenarListaConArreglo(int n) {
+			int contador = 0;
+			for (int i = 0; i < n; i++) {
 				listBox2->Items->Add(contador + " --- " + arreglo[i]);
 				contador++;
 			}
@@ -820,29 +825,27 @@ private: System::Void btnInicializar_Click(System::Object^ sender, System::Event
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		listBox2->Items->Clear();
-		int cantidad = Convert::ToInt16(textBox1->Text);
+		cantidad = Convert::ToInt16(textBox1->Text);
 		funcionRandom();
 		Burbuja(cantidad);
+		llenarListaConArreglo(cantidad);
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		int cantidad = Convert::ToInt16(textBox1->Text);
 		int numero = Convert::ToInt16(txtSecuencial->Text);
-		if (metodoSecuencial(cantidad - 1, numero) == -1) {
+		if (metodoSecuencial(cantidad, numero) == -1) {
 			MessageBox::Show("El número no existe ");
 		}
 		else {
-			MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad - 1, numero));
+			MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad, numero));
 		}
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		int cantidad = Convert::ToInt16(textBox1->Text);
 		int numero = Convert::ToInt16(txtBinaria->Text);
-		MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad-1, numero));
-		if (Binario(0, cantidad - 1, numero) == -1) {
+		if (Binario(0, cantidad , numero) == -1) {
 			MessageBox::Show("El número no existe ");
 		}
 		else {
-			MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad - 1, numero));
+			MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad , numero));
 		}
 }
 };

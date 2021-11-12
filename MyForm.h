@@ -822,7 +822,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		listBox2->Items->Clear();
 		int cantidad = Convert::ToInt16(textBox1->Text);
 		funcionRandom();
-		Burbuja(cantidad-1);
+		Burbuja(cantidad);
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		int cantidad = Convert::ToInt16(textBox1->Text);

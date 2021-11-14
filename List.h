@@ -47,6 +47,17 @@ public:
 		}
 		return iterator->item;
 	}
+	int getPosicion(T* value) {
+		int count = 0;
+		Node* temp = this->head;
+		while (temp != nullptr) {
+			if (temp->item = value) {
+				return count;
+			}
+			count++;
+		}
+		return -1;
+	}
 	void clear() {
 		this->head = nullptr;
 		this->tail = nullptr;

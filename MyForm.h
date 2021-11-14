@@ -52,6 +52,8 @@ namespace Lab7 {
 	public:
 
 		   List<Poligono>* poligonos;
+		   List<int>* Arreglo;
+		   array<List<int>*, 1>^ Hash = gcnew array<List<int>*, 1>(100);
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -238,6 +240,7 @@ namespace Lab7 {
 			this->button4->TabIndex = 20;
 			this->button4->Text = L"Aceptar";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// txtBinaria
 			// 
@@ -680,7 +683,9 @@ namespace Lab7 {
 			int cantidad = Convert::ToInt16(textBox1->Text);	
 			arreglo = new int[cantidad];
 			for (int i = 0; i < cantidad; i++) {
-				arreglo[i] = rand() % (900 - (1 + 1)) + 1;
+				int numero= rand() % (900 - (1 + 1)) + 1;
+				arreglo[i] = numero;
+				insertarHashDinamico(&numero);
 			}	
 		}
 		void Burbuja(int n)
@@ -736,7 +741,29 @@ namespace Lab7 {
 			}
 			return -1;
 		}
+		int insertarHashDinamico(int* value)
+		{
+			int Indice = *value % 100;
+			if (Hash[Indice] == nullptr)
+				Hash[Indice] = new List<int>;
+			Hash[Indice]->add(value);
+			return Indice;
+		}
 
+		int busquedaHashDinamico(int value)
+		{
+			int Indice = value % 100;
+			if (Hash[Indice] == nullptr)
+				return -1;
+			int Pos = Hash[Indice]->getPosicion(&value);
+			if (Pos != 1) {
+				return Indice;
+			}
+			else {
+				return -1;
+			}
+			
+		}
 		void MarshalString(String^ s, string& os) {
 			using namespace Runtime::InteropServices;
 			const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
@@ -780,7 +807,6 @@ namespace Lab7 {
 	private: System::Void btnActualizar_Click(System::Object^ sender, System::EventArgs^ e) {
 		llenarListBox();
 	}
-
 	private: System::Void btnRectangulo_Click(System::Object^ sender, System::EventArgs^ e) {
 		if ((txtAlturaR->Text->Trim() != "") && (txtBaseR->Text->Trim() != "") && (txtColorR->Text->Trim() != "")) {
 			double base = Convert::ToDouble(txtBaseR->Text);
@@ -800,7 +826,7 @@ namespace Lab7 {
 			MessageBox::Show("Complete todos los campos", "Insersión incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}	
 	}
-private: System::Void btnCuadrado_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnCuadrado_Click(System::Object^ sender, System::EventArgs^ e) {
 	if ((txtLadoC->Text->Trim() != "") &&  (txtColorC->Text->Trim() != "")) {
 		double base = Convert::ToDouble(txtLadoC->Text);
 		String^ color = txtColorC->Text->Trim();
@@ -818,35 +844,69 @@ private: System::Void btnCuadrado_Click(System::Object^ sender, System::EventArg
 		MessageBox::Show("Complete todos los campos", "Insersión incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 }
-private: System::Void btnInicializar_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnInicializar_Click(System::Object^ sender, System::EventArgs^ e) {
 		ID = 1;
 		poligonos->clear();
 		listBox1->Items->Clear();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		listBox2->Items->Clear();
-		cantidad = Convert::ToInt16(textBox1->Text);
-		funcionRandom();
-		Burbuja(cantidad);
-		llenarListaConArreglo(cantidad);
+		if (textBox1->Text != "") {
+			cantidad = Convert::ToInt16(textBox1->Text);
+			funcionRandom();
+			Burbuja(cantidad);
+			llenarListaConArreglo(cantidad);
+		}
+		else {
+			MessageBox::Show("Ingrese un número", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		int numero = Convert::ToInt16(txtSecuencial->Text);
-		if (metodoSecuencial(cantidad, numero) == -1) {
-			MessageBox::Show("El número no existe ");
+		if (txtSecuencial->Text != "") {
+			int numero = Convert::ToInt16(txtSecuencial->Text);
+			if (metodoSecuencial(cantidad, numero) == -1) {
+				MessageBox::Show("El número no existe ");
+			}
+			else {
+				MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad, numero));
+			}
 		}
 		else {
-			MessageBox::Show("El número se encuentra en la posición: " + metodoSecuencial(cantidad, numero));
+			MessageBox::Show("Ingrese un número", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (txtBinaria->Text != "") {
 		int numero = Convert::ToInt16(txtBinaria->Text);
-		if (Binario(0, cantidad , numero) == -1) {
+		if (Binario(0, cantidad, numero) == -1) {
 			MessageBox::Show("El número no existe ");
 		}
 		else {
-			MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad , numero));
+			MessageBox::Show("El número se encuentra en la posición: " + Binario(0, cantidad, numero));
 		}
+	}
+	else {
+		MessageBox::Show("Ingrese un número", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+		
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox4->Text != "") {
+		int numero = Convert::ToInt16(textBox4->Text);
+		busquedaHashDinamico(numero);
+		if (busquedaHashDinamico(numero) == -1) {
+			MessageBox::Show("El número no existe ");
+		}
+		else {
+			MessageBox::Show("El número se encuentra en la posición de la Hashtable: " + busquedaHashDinamico(numero));
+		}
+	}
+	else {
+		MessageBox::Show("Ingrese un número", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+		
 }
 };
 }
